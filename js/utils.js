@@ -33,6 +33,14 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getFileName(file) {
+  const fileName = file.name
+  const lastDotIndex = fileName.lastIndexOf('.');
+  if (lastDotIndex <= 0) return fileName;
+  
+  return fileName.slice(0, lastDotIndex);
+}
+
 function getFileDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
