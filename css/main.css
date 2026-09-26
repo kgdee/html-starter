@@ -134,9 +134,78 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   min-height: 100vh;
 }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.url-input {
+  display: flex;
+  gap: 5px;
+  width: 400px;
+}
+
+.url-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 50px;
+  background-color: var(--label-color);
+}
+
+.url-input button {
+  background-color: var(--lightblue);
+  border-radius: 50px;
+}
+
+.output-panel {
+  overflow-x: auto;
+  overflow-y: visible;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.output-panel .download-menu {
+  border-collapse: collapse;
+  border: 1px solid var(--border-color);
+}
+
+.output-panel .download-menu th,
+.output-panel .download-menu td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.output-panel .preview {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 300px;
+  text-align: center;
+}
+
+.output-panel .preview img {
+  width: 300px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.output-panel .preview select {
+  border: 1px solid var(--border-color);
+}
+
 
 /* Medium screens (Tablets, up to 768px wide) */
 @media (max-width: 768px) {

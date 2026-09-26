@@ -1,1 +1,1 @@
-const PROJECT_NAME = "html-starter"
+const PROJECT_NAME = "yt-downloader"
