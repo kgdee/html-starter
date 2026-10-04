@@ -1,11 +1,28 @@
+const isLocalhost = Boolean(
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "[::1]" || // IPv6 loopback
+  window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/), // 127.0.0.1/8 IPv4 loopback
+);
+
 window.addEventListener("error", (event) => {
   const error = `${event.type}: ${event.message}`;
+  handleError(error);
+});
+
+function handleError(error) {
   console.error(error);
   alert(error);
-});
+  if (!isLocalhost) location.reload();
+}
 
 function stopPropagation(event) {
   event.stopPropagation();
+}
+
+function generateId() {
+  return Array.from(crypto.getRandomValues(new Uint8Array(16)))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
 }
 
 function save(key, value) {
@@ -34,10 +51,10 @@ function randomInt(min, max) {
 }
 
 function getFileName(file) {
-  const fileName = file.name
-  const lastDotIndex = fileName.lastIndexOf('.');
+  const fileName = file.name;
+  const lastDotIndex = fileName.lastIndexOf(".");
   if (lastDotIndex <= 0) return fileName;
-  
+
   return fileName.slice(0, lastDotIndex);
 }
 
@@ -80,7 +97,7 @@ function getRandomItem(arr) {
 }
 
 function getUniqueItems(arr, count) {
-  if (!Array.isArray(arr) || count <= 0) return [];  
+  if (!Array.isArray(arr) || count <= 0) return [];
   const k = Math.min(count, arr.length);
   const result = [...arr];
   for (let i = 0; i < k; i++) {
@@ -94,7 +111,7 @@ function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     // Pick a random index from 0 to i
     const j = Math.floor(Math.random() * (i + 1));
-    
+
     // Swap elements at indices i and j
     [array[i], array[j]] = [array[j], array[i]];
   }
