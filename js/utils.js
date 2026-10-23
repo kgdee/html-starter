@@ -117,3 +117,16 @@ function shuffle(array) {
   }
   return array;
 }
+
+function escapeHTML(str) {
+  return String(str ?? "").replace(/[&<>"']/g, (match) => {
+    const escapeMap = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return escapeMap[match];
+  });
+}
