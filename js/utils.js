@@ -130,3 +130,16 @@ function escapeHTML(str) {
     return escapeMap[match];
   });
 }
+
+async function copyText(text) {
+  await navigator.clipboard.writeText(text);
+}
+
+function getFreshUrl(url) {
+  if (!url) return "";
+  return `${url}?t=${new Date().getTime()}`;
+}
+
+function formatQuantity(count, singular, plural = singular + "s") {
+  return `${count} ${count === 1 ? singular : plural}`;
+}
